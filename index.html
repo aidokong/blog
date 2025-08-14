@@ -1,305 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="jquery/customjq.js"></script>
-        <link rel="stylesheet" href="assets/css/custom.css">
-        <!--========== BOX ICONS ==========-->
-        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-        <link rel="stylesheet" href="assets/slick/boxicons.min.css">
-        <!--========== CSS ==========-->
-        <link rel="stylesheet" href="assets/css/styles.css">
-        <script src="assets/slick/slick.min.js"></script>
-        <link rel="stylesheet" href="assets/slick/slick.min.css">
-        <link rel="stylesheet" href="assets/slick/slick-theme.min.css">
-        <title>Aidoko | Home</title>
-    </head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Harnessing Deep Learning to Detect COVID-19 Pneumonia from CT Scans</title>
+  <meta name="description" content="A concise, research-backed blog post explaining how a UNet++ deep learning model detects COVID-19 pneumonia on high-resolution CT scans, and why it matters for precision medicine." />
+  <meta property="og:title" content="Harnessing Deep Learning to Detect COVID-19 Pneumonia from CT Scans" />
+  <meta property="og:description" content="How a UNet++ model reached near-expert performance and cut reading time by 65%—and what it means for precision medicine." />
+  <meta property="og:type" content="article" />
+  <link rel="stylesheet" href="style.css" />
+</head>
 <body>
-    <!--========== SCROLL TOP ==========-->
-    <a href="#" class="scrolltop" id="scroll-top">
-        <i class='bx bx-up-arrow-alt scrolltop__icon'></i>
-    </a>
-    
-    <!--========== HEADER ==========-->
-    <header class="l-header" id="header">
-        <nav class="nav bd-container">
-            <a href="index.html" class="nav__logo">
-                <div class="logo__main">
-                    <img src="/assets/img/logo.png" alt="Logo 1" class="logo__primary">
-                    <img src="/assets/img/logo2.png" alt="logo" class="logo__secondary" style="display: none;"> 
-                </div>
-            </a>
-            <div class="nav__menu" id="nav-menu" style="background-color: #DA2535;">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="https://aidokong.github.io/design.html" class="nav__link">Design</a></li>
-                    <li class="nav__item"><a href="https://aidokong.github.io/Tech.html" class="nav__link">Tech</a></li>
-                    <li class="nav__item"><a href="https://aidokong.github.io/climate.html" class="nav__link">Climate Change</a></li>
-                    <li class="nav__item"><a href="https://aidokong.github.io/blog/index.html" class="nav__link active-link">News</a></li>
-                    <li class="nav__item"><a href="https://aidokong.github.io/about.html" class="nav__link">About</a></li>
-                    <li class="nav__item"><a href="https://aidokong.github.io/contact.html" class="nav__link">Contact Us</a></li>
-                    <li><i class='bx bx-toggle-left change-theme' id="theme-button"></i></li>
-                </ul>
-            </div>
-            <div class="nav__toggle" id="nav-toggle">
-                <i class='bx bx-grid-alt'></i>
-            </div>
-        </nav>
-    </header>
-
-    <main class="l-main">
-        <!--========== HOME ==========-->
-        <!-- ...existing code... -->
-        <!--========== BLOG ==========-->
-        <section class="blog section bd-container" id="blog">
-            <h2 class="section-title">Latest News</h2>
-            <div class="blog__container bd-grid">
-                <div class="blog__content">
-                    <h3 class="blog__title">Animation</h3>
-                    <div class="blog__post">
-                        <img src="assets/img/Jerry-Eisenberg-obit-collage-696x418.jpg" alt="Tech News 1" class="blog__post-img">
-                        <h4 class="blog__post-title">Animation Producer & Designer Jerry Eisenberg Dies Age 87</h4>
-                        <p class="blog__post-description">Animation Producer & Designer Jerry Eisenberg Dies Age 87</p>
-                        
-                        <div class="more-content" style="display: none;">
-                            <p>Animator, producer, storyboard artist and character designer Jerry Eisenberg — celebrated for his work with iconic Saturday morning cartoon studios Hanna-Barbera and Ruby-Spears — has died due to complications from pneumonia. Reportedly ill for some time, Eisenberg passed on February 11 at age 87.
-
-                                The news was shared by writer Mark Evanier on his News from ME blog and amongst the animation community.
-                                
-                                Born December 14, 1937 in Los Angeles — the son of animation and comics artist Harvey Eisenberg (Tom and Jerry) — Jerry Eisenberg attended CalArts and started his career in 1956 as an in-betweener for MGM, where his father had also worked. When the animation studio closed just seven months later, the young artist moved on Warner Bros. Cartoons, as an assistant to animator Ken Harris.
-                                
-                                Eisenberg was hired at Hanna-Barbera Productions (founded by MGM alums William Hanna and Joseph Barbera) in 1961. Here, he notably co-created The Peter Potamus Show, provided character designs for Wacky Races and Super Friends, and worked in the layout department for hits like The Jetsons, Jonny Quest and The Huckleberry Hound Show.</p>
-                                <br>
-                                <p>
-                                    Another offshoot studio led to Eisenberg’s next chapter: When Hanna-Barbera artists Joe Ruby and Ken Spears launched Ruby-Spears Productions in 1977, they soon brough Eisenberg on board as a producer and character designer. Titles he worked on included Thundarr the Barbarian, Fangface and The Plastic Man Comedy/Adventure Show. The Ruby-Spears studio lasted until 1996.
-
-Later in the course of his career, Eisenberg worked in storyboards, layout, design and writing for various productions across multiple studios, with noteworthy titles including Warner Bros. Animation’s Johnny Bravo, Tom & Jerry Kids and several Scooby-Doo direct-to-video movies, as well as Muppet Babies (Marvel Prod.) and House of Mouse (Walt Disney Television Animation).
-
-Eisenberg is survived by his wife, Raymonde, who friends say provided exceptional care to the late cartoon creative in his final years.
-
-You can hear more about Jerry Eisenberg’s luminous career in this Oral History interview for The Animation Guild from 2012:
-                                </p>
-                           
-                        </div>
-                        <a class="button button-link read-more" id="flip" style="background-color: #DA2535; color: #FFF;">Read More</a>
-                        
-                    </div>
-                </div>
-
-                <div class="blog__content">
-                    <h3 class="blog__title">Tech</h3>
-                    <div class="blog__post">
-                        <img src="assets/img/AI-tools.jpg" alt="Tech News 1" class="blog__post-img">
-                        <h4 class="blog__post-title">Latest in Tech</h4>
-                        <p class="blog__post-description">This AI-feeding frenzy reminds me more and more of the dot-com bubble in the late 1990s, but with less focus on overpaying employees. As it was then, the core issue now is companies screaming that their AI is better, but most buyers are still not well enough informed or trained to deploy AI effectively.</p>
-                        
-                        <div class="more-content" style="display: none;">
-                            <h2><b>DeepSeek: A Cheaper and Better AI Alternative</b></h2>
-
-DeepSeek has captured attention by emphasizing <b>quality over speed</b> in AI development. Unlike other models, it integrates a robust AI quality check, resulting in a cheaper, higher-quality product. Developed in China, DeepSeek achieved remarkable cost efficiency, creating its generative AI model for just $6 million compared to the usual $100 million—a <b>94% cost saving</b>. 
-
-DeepSeek's optimization for older Nvidia technology highlights its ingenuity but raises security concerns due to potential interference from the Chinese government. Despite these challenges, it delivers impressive performance while reducing expenses.
-
-The AI wars are intensifying, with over 1,500 new AI companies vying for dominance. DeepSeek's emergence has put OpenAI on notice and disrupted Nvidia's valuation. However, U.S. policies blocking Nvidia's top tech sales to China may inadvertently strengthen China's AI advancements.
-
-<b>The race for AI supremacy</b> has begun, and DeepSeek's launch marks a pivotal moment in this global competition.
-
-                           
-                        </div>
-                        <a class="button button-link read-more" id="flip" style="background-color: #DA2535; color: #FFF;">Read More</a>
-                        
-                    </div>
-                </div>
-
-
-                <div class="blog__content">
-                    <h3 class="blog__title">Tech</h3>
-                    <div class="blog__post">
-                        <img src="assets/img/scrapping.png" alt="Tech News 1" class="blog__post-img">
-                        <h4 class="blog__post-title">Web Scraping</h4>
-                        <p class="blog__post-description">Python Web Scraping with Flask: A Step-by-Step Guide</p>
-                        
-                        <div class="more-content" style="display: none;">
-                            <p>Web scraping refers to extracting data from websites programmatically. This article demonstrates how to build a simple web scraper using Python and Flask. With Flask’s micro-framework, we can create a straightforward web interface to display the data we gather. Here, we will scrape data from a sample news portal and display the headlines on our Flask web app.
-                                <br>
-
-                                <b>Step 1:</b> Set up your environment
-                                Before getting started, ensure you have the following installed on your system:
-                                
-                                <br>
-                                <ul>
-                                    <li>Python 3.8 or higher -Flask</li>
-                                    <li>Requests</li>
-                                    <li>Beautiful Soup</li>
-                                </ul>
-                                <p>
-                                  <table>
-                                    <tr>
-                                        <th>S/N</th>
-                                    <th>Name</th>
-                                    <th>Install</th>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            1
-                                        </td>
-                                        <td>
-                                            flask
-                                        </td>
-                                        <td>
-                                            pip install flask
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Request</td>
-                                        <td>pip install requests</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Beautifulsoup</td>
-                                        <td>pip install eautifulsoup</td>
-                                    </tr>
-                                  </table>
-                                Install the necessary packages using pip:
-                                
-                                pip install flask requests beautifulsoup4
-                                </p>
-                                <br>
-
-                                <b>Step 2:</b> Creating a basic Flask app
-                                Start with creating a folder for your project, then create a new file named `app.py`. Inside `app.py`, write a basic Flask app:
-                                
-                                <img src="assets/img/flask.png" alt="">
-                                <br>
-                               <b> Step 3:</b> Design the scraping function
-                                In this step, create a scraping function to fetch data from the example news portal, `https://www.example-news.com`. We’ll use the Requests library to send HTTP requests and Beautiful Soup for parsing the HTML.
-                                
-                               <img src="assets/img/request.png" alt="">
-                               <br>
-                                <b>Step 4:</b> Integrating scraping function with Flask
-                                Integrate the `scrape_news` function with your Flask app by calling it in the `home` route and passing the headlines to the `index.html` template.
-                                
-                                @app.route("/")
-                                def home():
-                                 headlines = scrape_news()
-                                 return render_template("index.html", headlines=headlines)
-                                 <br>
-                                <b>Step 5:</b> Creating the HTML template
-                                Create a new folder named `templates` inside your project folder and create a file named `index.html`. In this file, display the scraped headlines using Jinja2 templating:
-                                <img src="assets/img/html.png" alt="">
-                                <b>Step 6:</b> Testing the web scraper
-                                Finally, test your web scraper by running the Flask application with the command `python app.py`. It will start the development server, and you can visit http://localhost:5000 in your browser to see the latest news headlines displayed in your app.
-                                
-                                <br>
-                               <b> Conclusion:</b>
-                                In this article, we used Flask to build a web app that allows users to interact with a web scraper written in Python. This is just a starting point — with this foundation, you can build more complex applications, explore different sources of data, and customize your web app’s appearance and functionality. I just hope this will be of some help to developers who want to do web scraping.
-                                </p>
-                           
-                        </div>
-                        <a class="button button-link read-more" id="flip" style="background-color: #DA2535; color: #FFF;">Read More</a>
-                        
-                    </div>
-                </div>
-
-                
-            </div>
-           
-        </section>
-        <!--========== SEND GIFT ==========-->
-        <!-- ...existing code... -->
-    </main>
-
-    <!--========== FOOTER ==========-->
-     <footer class="footer section">
-        <div class="footer__container bd-container bd-grid">
-            <div class="footer__content">
-                <h3 class="footer__title">
-                    <a href="#" class="footer__logo">Address</a>
-                </h3>
-                <p class="footer__description">Kubwa Nasco Road <br> Abuja Nigeria</p>
-            </div>
-
-            <div class="footer__content">
-                <h3 class="footer__title">Our Services</h3>
-                <ul>
-                    <li><a href="https://aidokong.github.io/climate.html" class="footer__link">Climate Change </a></li>
-                    <li><a href="https://aidokong.github.io/Tech.html" class="footer__link">App Development</a></li>
-                    <li><a href="https://aidokong.github.io/design.html" class="footer__link">Animation | Graphics</a></li>
-                </ul>
-            </div>
-
-            <div class="footer__content">
-                <h3 class="footer__title">Our Company</h3>
-                <ul>
-                    <li><a href="https://aidokong.github.io/blog/index.html" class="footer__link">Blog</a></li>
-                    <li><a href="https://aidokong.github.io/about.html" class="footer__link">About Us</a></li>
-                    <li><a href="https://aidokong.github.io/contact.html" class="footer__link">Contact Us</a></li>
-                </ul>
-            </div>
-
-            <div class="footer__content">
-                <h3 class="footer__title">Social</h3>
-                <a href="https://www.facebook.com/terryems" class="footer__social"><i class='bx bxl-facebook-circle '></i></a>
-                <a href="https://www.linkedin.com/in/terryems" class="footer__social"><i class='bx bxl-linkedin'></i></a>
-                <a href="https://www.github.com/terryems" class="footer__social"><i class='bx bxl-github'></i></a>
-                <a href="https://www.github.com/terryems" class="footer__social"><i class='bx bxl-instagram-alt'></i></a>
-            </div>
+  <header class="site-header">
+    <div class="container header-grid">
+      <div class="author">
+        <img class="passport" src="passport.jpeg" alt="Passport photo of Emmanuel Simon" />
+        <div class="byline">
+          <h1 class="site-title">Precision Medicine Blog</h1>
+          <p class="author-name">By <strong>Emmanuel Simon</strong></p>
+          <p class="post-date" aria-label="Publication date">August 13, 2025 • Abuja, Nigeria</p>
         </div>
+      </div>
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="#" aria-current="page">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="#">Precision Medicine</a>
+        <span aria-hidden="true">›</span>
+        <span class="current">AI & Radiology</span>
+      </nav>
+    </div>
+  </header>
 
-        <p class="footer__copy">&#169; 2025 @aidoko. All right reserved</p>
-    </footer>
+  <main id="main" class="container">
+    <article class="post" itemscope itemtype="https://schema.org/ScholarlyArticle">
+      <header class="post-header">
+        <h2 class="post-title" itemprop="headline">Harnessing Deep Learning to Detect COVID-19 Pneumonia from High-Resolution CT Scans</h2>
+        <p class="dek" itemprop="description">
+          During the early COVID-19 surge, radiology teams were overwhelmed. A UNet++ deep learning system stepped in—matching expert performance and cutting review time by 65%. Here’s how it worked, and why it matters for precision medicine.
+        </p>
+      </header>
 
-    <!--========== SCROLL REVEAL ==========-->
-    <script src="assets/slick/scrollreveal.js"></script>
-    <!--========== MAIN JS ==========-->
-    <script src="assets/js/main.js"></script>
-    <script>
-        $(document).ready(function(){
-            $(".read-more").click(function(){
-                $(this).siblings(".more-content").slideToggle("slow");
-            });
+      <section class="post-body" itemprop="articleBody">
+        <h3 id="context">Why this research mattered</h3>
+        <p>
+          As COVID-19 emerged in late 2019, health systems needed fast, reliable ways to flag pneumonia on
+          <abbr title="Computed Tomography">CT</abbr> scans. <strong>RT-PCR</strong> remained the diagnostic standard, but CT helped
+          catch lung changes—often early—when time to isolation and treatment was critical.
+        </p>
 
-            $('#scrape').click(function () {
-                $.ajax({
-                    url: 'view-source:https://www.technewsworld.com/section/computing',
-                    method: 'GET',
-                    success: function (response) {
-                        const parser = new DOMParser();
-                        const doc = parser.parseFromString(response, 'text/html');
-                        const content = doc.querySelector('h2').outerHTML + doc.querySelector('div').outerHTML;
-                        $('#content').html(content);
-                    },
-                    error: function (xhr, status, error) {
-                        console.error('Error fetching data:', error);
-                        $('#content').html('<p>Failed to scrape the data. Check the console for details.</p>');
-                    }
-                });
-            });
-        });
-    </script>
-    <a href="https://wa.me/+2347069253361" class="whatsapp_float" target="_blank">
-        <i class='bx bxl-whatsapp'></i>
-    </a>
-    <style>
-        .whatsapp_float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 40px;
-            left: 60px;
-            background-color: #25d366;
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 3px #999;
-            z-index: 100;
-        }
-        .whatsapp_float i {
-            margin-top: 16px;
-        }
-    </style>
+        <h3 id="the-approach">The approach: UNet++ for pixel-level lesion detection</h3>
+        <p>
+          The study trained a <strong>UNet++</strong> segmentation model with a <strong>ResNet-50</strong> backbone on
+          <strong>46,096</strong> CT images from <strong>106</strong> patients (51 confirmed COVID-19; 55 controls). After filtering,
+          <strong>35,355</strong> lung images were used. Experienced radiologists labeled COVID-19 lesions, giving the network
+          high-quality pixel-level supervision.
+        </p>
+        <ul>
+          <li><em>Step 1:</em> Identify valid lung regions (to ignore irrelevant areas).</li>
+          <li><em>Step 2:</em> Detect suspicious lesions via pixel-wise segmentation.</li>
+          <li><em>Stability boost:</em> Link predictions across consecutive slices and quadrants to reduce false positives.</li>
+        </ul>
+
+        <h3 id="results">Key results at a glance</h3>
+        <div class="stats-grid" role="group" aria-label="Model performance highlights">
+          <div class="stat">
+            <div class="stat-value">95.24%</div>
+            <div class="stat-label">Per-patient accuracy (internal)</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">98.85%</div>
+            <div class="stat-label">Per-image accuracy (internal)</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">92.59%</div>
+            <div class="stat-label">Accuracy (prospective, n=27)</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">96%</div>
+            <div class="stat-label">Accuracy (external cohort)</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">65%</div>
+            <div class="stat-label">Radiologist time saved</div>
+          </div>
+        </div>
+        <p>
+          Crucially, sensitivity stayed high (up to <strong>100%</strong> per-patient in internal/ prospective sets), meaning
+          the model rarely missed positive cases—exactly what you want in outbreak triage.
+        </p>
+
+        <h3 id="so-what">So what? Implications for precision medicine</h3>
+        <p>
+          Precision medicine isn’t only about genomics; it’s about <em>getting the right decision to the right patient at the right time</em>.
+          Here, deep learning enhanced:
+        </p>
+        <ol>
+          <li><strong>Speed:</strong> ~41 seconds per case vs. ~116 seconds unaided.</li>
+          <li><strong>Consistency:</strong> Less affected by fatigue or workload.</li>
+          <li><strong>Scalability:</strong> Open access platform + open-sourced code lowered barriers to adoption and validation.</li>
+        </ol>
+
+        <h3 id="limitations">Limitations & what to watch next</h3>
+        <ul>
+          <li><strong>Generalizability:</strong> Multi-site data helps, but broader, diverse datasets and scanner types strengthen robustness.</li>
+          <li><strong>Clinical integration:</strong> Human-in-the-loop workflows and clear fail-safes are essential.</li>
+          <li><strong>Beyond COVID-19:</strong> The same pipeline could support rapid triage for other viral pneumonias and lung pathologies.</li>
+        </ul>
+
+        <h3 id="takeaway">Bottom line</h3>
+        <p>
+          A well-designed segmentation model (UNet++ + ResNet-50) can match expert performance and free precious clinician time.
+          In a public-health emergency, that time can translate directly into better outcomes and reduced spread—core goals of precision
+          medicine in practice.
+        </p>
+      </section>
+
+      <footer class="post-footer">
+        <h4>Citation</h4>
+        <p class="citation">
+          Chen, J., Wu, L., Zhang, J., et&nbsp;al. (2020).
+          <em>Deep learning-based model for detecting 2019 novel coronavirus pneumonia on high-resolution computed tomography.</em>
+          <span>Scientific Reports</span>, 10, 19196. https://doi.org/10.1038/s41598-020-76282-0
+        </p>
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>© <span id="year">2025</span> Emmanuel Simon • Precision Medicine Project</p>
+      <a class="top-link" href="#main">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    // Keep the year fresh without manual edits
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
