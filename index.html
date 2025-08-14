@@ -3,28 +3,29 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Harnessing Deep Learning to Detect COVID-19 Pneumonia from CT Scans</title>
-  <meta name="description" content="A concise, research-backed blog post explaining how a UNet++ deep learning model detects COVID-19 pneumonia on high-resolution CT scans, and why it matters for precision medicine." />
-  <meta property="og:title" content="Harnessing Deep Learning to Detect COVID-19 Pneumonia from CT Scans" />
-  <meta property="og:description" content="How a UNet++ model reached near-expert performance and cut reading time by 65%—and what it means for precision medicine." />
-  <meta property="og:type" content="article" />
+  <title>AI-Assisted Detection of COVID-19 Pneumonia on CT: Methods, Findings, and Lessons for Precision Medicine</title>
+  <meta name="description" content="Scholarship-ready bioinformatics research blog post following Stanford's 10-step guideline, based on a Scientific Reports paper using UNet++ to detect COVID-19 pneumonia from high-resolution CT scans." />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="theme-academic">
   <header class="site-header">
     <div class="container header-grid">
       <div class="author">
-        <img class="passport" src="passport.jpeg" alt="Passport photo of Emmanuel Simon" />
+        <img class="passport" src="passport.jpeg" alt="Passport photograph of Emmanuel Simon" />
         <div class="byline">
-          <h1 class="site-title">Precision Medicine Blog</h1>
-          <p class="author-name">By <strong>Emmanuel Simon</strong></p>
-          <p class="post-date" aria-label="Publication date">August 13, 2025 • Abuja, Nigeria</p>
+          <h1 class="site-title">Bioinformatics Research Blog</h1>
+          <p class="author-name">By <strong><a class="link_name" href="https://www.aidoko.com.ng">Emmanuel Simon</a></strong></p>
+          <p class="post-date">July 10, 2025 • Abuja, Nigeria</p>
+          <ul class="social">
+            <li><a href="https://www.linkedin.com/in/terryems" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://github.com/terryems" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
         </div>
       </div>
       <nav class="crumbs" aria-label="Breadcrumb">
-        <a href="#" aria-current="page">Home</a>
+        <a href="https://www.stanford.edu" aria-current="page" class="home">Home</a>
         <span aria-hidden="true">›</span>
-        <a href="#">Precision Medicine</a>
+        <a href="https://www.dataocean.stanford.edu" class="home">Precision Medicine</a>
         <span aria-hidden="true">›</span>
         <span class="current">AI & Radiology</span>
       </nav>
@@ -34,93 +35,156 @@
   <main id="main" class="container">
     <article class="post" itemscope itemtype="https://schema.org/ScholarlyArticle">
       <header class="post-header">
-        <h2 class="post-title" itemprop="headline">Harnessing Deep Learning to Detect COVID-19 Pneumonia from High-Resolution CT Scans</h2>
+        <h2 class="post-title" itemprop="headline">
+          AI-Assisted Detection of COVID-19 Pneumonia on CT: Methods, Findings, and Lessons for Precision Medicine
+        </h2>
         <p class="dek" itemprop="description">
-          During the early COVID-19 surge, radiology teams were overwhelmed. A UNet++ deep learning system stepped in—matching expert performance and cutting review time by 65%. Here’s how it worked, and why it matters for precision medicine.
+          I review a Scientific Reports study that trained a UNet++ segmentation model (ResNet-50 backbone) on high-resolution CT scans to detect COVID-19 pneumonia, evaluate its performance, and discuss implications for precision medicine, ethics, and real-world deployment.
         </p>
       </header>
 
       <section class="post-body" itemprop="articleBody">
-        <h3 id="context">Why this research mattered</h3>
+        <h3 id="introduction">Introduction (Step 1)</h3>
         <p>
-          As COVID-19 emerged in late 2019, health systems needed fast, reliable ways to flag pneumonia on
-          <abbr title="Computed Tomography">CT</abbr> scans. <strong>RT-PCR</strong> remained the diagnostic standard, but CT helped
-          catch lung changes—often early—when time to isolation and treatment was critical.
+          I selected <em>Deep learning-based model for detecting 2019 novel coronavirus pneumonia on high-resolution computed tomography</em>
+          (Scientific Reports, 2020) because it sits at the intersection of applied AI, clinical imaging, and scalable decision support—areas central to my goal of developing deployable precision-medicine tools in resource-constrained settings. The main question addressed by the research is whether a deep learning system can accurately and quickly identify COVID-19 pneumonia on chest CT images to support timely triage. This problem matters in bioinformatics because robust, generalizable models that convert high-dimensional biomedical data into reliable predictions are foundational to precision medicine. The authors hypothesize that a UNet++ segmentation pipeline—augmented by logical rules across slices and quadrants—can match expert radiologist performance while reducing reading time, thereby aiding clinical workflows during surges.
         </p>
 
-        <h3 id="the-approach">The approach: UNet++ for pixel-level lesion detection</h3>
+        <h3 id="background">Background & Context (Step 2)</h3>
         <p>
-          The study trained a <strong>UNet++</strong> segmentation model with a <strong>ResNet-50</strong> backbone on
-          <strong>46,096</strong> CT images from <strong>106</strong> patients (51 confirmed COVID-19; 55 controls). After filtering,
-          <strong>35,355</strong> lung images were used. Experienced radiologists labeled COVID-19 lesions, giving the network
-          high-quality pixel-level supervision.
+          Chest CT offers rich spatial context for pulmonary pathologies such as ground-glass opacities—typical in viral pneumonias. During the early COVID-19 outbreak, RT-PCR remained the diagnostic reference standard, yet imaging frequently assisted with rapid assessment and isolation decisions. From a research-ethics perspective, patient privacy and data governance are crucial; imaging data must be de-identified and used under appropriate approvals. From a cloud-computing viewpoint, scalable inference endpoints can extend diagnostic support to hospitals with few radiologists, provided security and latency requirements are met. Although this study is imaging-centric (not omics), it aligns with omics data principles: standardized processing, rigorous validation, and transparent reporting to ensure reproducibility and integration with other patient-level features in precision workflows.
+        </p>
+        <p>
+          The work builds upon established convolutional neural network architectures for medical segmentation (UNet/UNet++), transfer learning (ResNet-family backbones), and practical clinical heuristics to reduce false positives. It both confirms and extends prior observations that AI can approach expert-level detection in medical imaging while addressing throughput and consistency.
+        </p>
+
+        <h3 id="methodology">Methodology (Step 3)</h3>
+        <p>
+          The authors trained a <strong>UNet++</strong> segmentation model with a <strong>ResNet-50</strong> backbone on chest CT images. The dataset comprised
+          <strong>46,096</strong> CT images from <strong>106</strong> patients (51 COVID-19 positive; 55 controls). After quality filtering, <strong>35,355</strong> lung images remained for analysis.
+          Expert radiologists provided pixel-level lesion annotations. The pipeline proceeded in two stages: (1) detect valid lung regions, and (2) perform lesion segmentation. To stabilize predictions and minimize false positives, the system linked consecutive slices and lung quadrants via simple rules (e.g., requiring spatial consistency across adjacent slices).
+        </p>
+        <p>
+          <strong>Why these methods?</strong> A segmentation approach captures lesion morphology at the pixel level, enabling precise localization compared to image-level classifiers. UNet++ provides dense skip connections for better multi-scale feature fusion—useful for subtle ground-glass patterns. ResNet-50 balances capacity and computational efficiency. Radiologist annotations make supervised learning reliable. Alternative dimensionality-reduction methods like PCA/t-SNE are more suitable for visualization than pixelwise delineation; here, convolutional segmentation is appropriate.
+        </p>
+        <p>
+          <strong>Data processing & tools:</strong> Images were curated to exclude non-lung slices; lung masks focused the model on relevant anatomy. While the paper does not enumerate every software package line-by-line, the workflow is typical of Python-based deep learning (e.g., PyTorch/Keras), with DICOM/PNG preprocessing, data augmentation, and cross-validation. Statistical reasoning centers on accuracy/sensitivity at image- and patient-levels. Conceptually, comparing mean per-patient probabilities across cohorts parallels hypothesis testing where a higher mean score for positives supports the model’s discriminative power.
+        </p>
+
+        <h3 id="results">Results (Step 4)</h3>
+        <p>
+          The model achieved strong performance across multiple settings:
         </p>
         <ul>
-          <li><em>Step 1:</em> Identify valid lung regions (to ignore irrelevant areas).</li>
-          <li><em>Step 2:</em> Detect suspicious lesions via pixel-wise segmentation.</li>
-          <li><em>Stability boost:</em> Link predictions across consecutive slices and quadrants to reduce false positives.</li>
+          <li><strong>Internal retrospective test:</strong> Per-patient accuracy ≈ <strong>95.24%</strong>; per-image accuracy ≈ <strong>98.85%</strong>.</li>
+          <li><strong>Prospective cohort (n=27):</strong> Accuracy ≈ <strong>92.59%</strong> with sensitivity up to <strong>100%</strong>.</li>
+          <li><strong>External dataset:</strong> Accuracy ≈ <strong>96%</strong>, sensitivity ≈ <strong>98%</strong>.</li>
+          <li><strong>Efficiency:</strong> Radiologist reading time dropped by roughly <strong>65%</strong> with AI assistance (about <strong>41s</strong> vs. <strong>116s</strong> unaided).</li>
+        </ul>
+        <p>
+          These findings support the authors’ objective: the model performs at near-expert level and accelerates clinical review. The high sensitivity in prospective and external evaluations is especially important for triage—missing true positives can have significant public-health consequences. A noteworthy aspect is the rule-based slice-linking that improved case-level stability, an elegant low-complexity addition. While not “surprising” in concept given prior work on UNet-style models, the magnitude of efficiency gains and consistency across cohorts are practically meaningful for crisis response and routine workflows.
+        </p>
+
+        <figure class="mini-figure">
+          <figcaption>Recreated performance snapshot (from paper-reported metrics)</figcaption>
+          <table class="perf-table" aria-label="Recreated performance table">
+            <thead>
+              <tr>
+                <th>Evaluation</th>
+                <th>Accuracy</th>
+                <th>Sensitivity</th>
+                <th>Note</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Internal (per-patient)</td>
+                <td>≈95.24%</td>
+                <td>High</td>
+                <td>Retrospective</td>
+              </tr>
+              <tr>
+                <td>Internal (per-image)</td>
+                <td>≈98.85%</td>
+                <td>—</td>
+                <td>Retrospective</td>
+              </tr>
+              <tr>
+                <td>Prospective (n=27)</td>
+                <td>≈92.59%</td>
+                <td>Up to 100%</td>
+                <td>Real-world stream</td>
+              </tr>
+              <tr>
+                <td>External dataset</td>
+                <td>≈96%</td>
+                <td>≈98%</td>
+                <td>Generalization</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="figure-note">Values paraphrased from Chen et&nbsp;al., 2020; recreated for explanatory purposes.</p>
+        </figure>
+
+        <h3 id="discussion">Discussion & Implications (Step 5)</h3>
+        <p>
+          The authors conclude that a UNet++ segmentation model, combined with lightweight logical rules, can support rapid and accurate CT-based detection of COVID-19 pneumonia. Practically, this enables faster triage, more consistent reads under heavy workloads, and potential extension to other pneumonias. Theoretically, the work reinforces that carefully engineered segmentation plus domain-informed post-processing can outperform naive image-level classifiers for subtle pathologies.
+        </p>
+        <p>
+          Limitations include dataset scope (number of sites/scanners), potential spectrum bias, and the need for robust prospective validation across diverse demographics and acquisition protocols. Future studies should explore federated learning for privacy-preserving multi-site training, calibrated uncertainty estimates, and integration with clinical/omic covariates to move from detection toward individualized risk stratification—core to precision medicine.
+        </p>
+
+        <h3 id="reflection">Reflection (Step 6)</h3>
+        <p>
+          What most impressed me was the pragmatic design: pairing a strong segmentation backbone with simple slice-linking rules that materially cut false positives and clinician time. It mirrors what I aim to build in my career—AI systems that respect clinical reality, run efficiently, and make frontline work easier. This study connects to my coursework in AI, statistics, and cloud systems: I recognized how mean accuracy metrics and sensitivity trade-offs directly influence deployment criteria, and how cloud endpoints could enable real-time inference across hospitals with limited specialists.
+        </p>
+        <p>
+          Real-world applications I envision include integrating CT detection with <em>pre-screening queues</em> and <em>tele-radiology</em> dashboards, combined with role-based access and audit logs to satisfy research ethics and data privacy. Questions I still have: How would calibration drift under new scanners be monitored? What is the best protocol for clinician override and feedback capture to continually improve the model?
+        </p>
+
+        <h4 id="llm-disclosure">Use of LLM Tools (Required Disclosure)</h4>
+        <ul>
+          <li><strong>Tools used:</strong> ChatGPT (GPT-5 Thinking).</li>
+          <li><strong>How they helped:</strong> I used the LLM to (a) outline the post to match Stanford’s 10-step rubric; (b) paraphrase technical concepts clearly; (c) check coherence, section flow, and concision; and (d) format the post into clean HTML/CSS. I did not copy text verbatim from AI outputs without editing; all interpretations of the paper are my own.</li>
+          <li><strong>What I learned:</strong> Prompting the LLM to enforce structure sharpened my focus on method-result alignment; iterative rewriting improved clarity; and explicitly stating assumptions reduced ambiguity. The process reinforced habits in reproducible writing and transparent documentation.</li>
         </ul>
 
-        <h3 id="results">Key results at a glance</h3>
-        <div class="stats-grid" role="group" aria-label="Model performance highlights">
-          <div class="stat">
-            <div class="stat-value">95.24%</div>
-            <div class="stat-label">Per-patient accuracy (internal)</div>
-          </div>
-          <div class="stat">
-            <div class="stat-value">98.85%</div>
-            <div class="stat-label">Per-image accuracy (internal)</div>
-          </div>
-          <div class="stat">
-            <div class="stat-value">92.59%</div>
-            <div class="stat-label">Accuracy (prospective, n=27)</div>
-          </div>
-          <div class="stat">
-            <div class="stat-value">96%</div>
-            <div class="stat-label">Accuracy (external cohort)</div>
-          </div>
-          <div class="stat">
-            <div class="stat-value">65%</div>
-            <div class="stat-label">Radiologist time saved</div>
-          </div>
-        </div>
+        <h3 id="conclusion">Conclusion</h3>
         <p>
-          Crucially, sensitivity stayed high (up to <strong>100%</strong> per-patient in internal/ prospective sets), meaning
-          the model rarely missed positive cases—exactly what you want in outbreak triage.
+          This study demonstrates that a UNet++ segmentation approach with a ResNet-50 backbone can detect COVID-19 pneumonia on CT with high accuracy and sensitivity while reducing radiologist reading time by about two-thirds. Beyond the pandemic, its design principles—precise pixel-level modeling, domain-informed heuristics, and validation across cohorts—provide a blueprint for building trustworthy clinical AI. As precision medicine advances, such systems will increasingly serve as decision-support co-pilots, enabling clinicians to deliver timely, individualized care.
         </p>
 
-        <h3 id="so-what">So what? Implications for precision medicine</h3>
-        <p>
-          Precision medicine isn’t only about genomics; it’s about <em>getting the right decision to the right patient at the right time</em>.
-          Here, deep learning enhanced:
-        </p>
-        <ol>
-          <li><strong>Speed:</strong> ~41 seconds per case vs. ~116 seconds unaided.</li>
-          <li><strong>Consistency:</strong> Less affected by fatigue or workload.</li>
-          <li><strong>Scalability:</strong> Open access platform + open-sourced code lowered barriers to adoption and validation.</li>
+        <h3 id="references">References</h3>
+        <ol class="refs">
+          <li>
+            Chen, J., Wu, L., Zhang, J., <em>et&nbsp;al.</em> (2020).
+            Deep learning-based model for detecting 2019 novel coronavirus pneumonia on high-resolution computed tomography.
+            <em>Scientific Reports</em>, 10, 19196. https://doi.org/10.1038/s41598-020-76282-0
+          </li>
+          <li>
+            How to read a paper: Tips by Stanford scientists (guidance referenced in Step 1–2).
+            <em>Stanford resource</em>.
+          </li>
         </ol>
 
-        <h3 id="limitations">Limitations & what to watch next</h3>
-        <ul>
-          <li><strong>Generalizability:</strong> Multi-site data helps, but broader, diverse datasets and scanner types strengthen robustness.</li>
-          <li><strong>Clinical integration:</strong> Human-in-the-loop workflows and clear fail-safes are essential.</li>
-          <li><strong>Beyond COVID-19:</strong> The same pipeline could support rapid triage for other viral pneumonias and lung pathologies.</li>
-        </ul>
-
-        <h3 id="takeaway">Bottom line</h3>
-        <p>
-          A well-designed segmentation model (UNet++ + ResNet-50) can match expert performance and free precious clinician time.
-          In a public-health emergency, that time can translate directly into better outcomes and reduced spread—core goals of precision
-          medicine in practice.
-        </p>
+        <aside class="cta-block">
+          <p><strong>Stanford Data Ocean scholarship notice (required text):</strong></p>
+          <p>
+            Stanford Data Ocean provides Stanford certificate training in precision medicine without costs to anyone whose annual income is under $70,000 USD/ year.
+            Apply for scholarship here:
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfi6ucNOQZwRLDjX_ZMScpkX-ct_p2i8ylP24JYoMlgR8Kz_Q/viewform" target="_blank" rel="noopener">Google Form</a>.
+            If you publish on LinkedIn, please tag <strong>@Stanford Deep Data Research Center</strong> in the post.
+          </p>
+        </aside>
       </section>
 
+
+
+      
+
       <footer class="post-footer">
-        <h4>Citation</h4>
         <p class="citation">
-          Chen, J., Wu, L., Zhang, J., et&nbsp;al. (2020).
-          <em>Deep learning-based model for detecting 2019 novel coronavirus pneumonia on high-resolution computed tomography.</em>
-          <span>Scientific Reports</span>, 10, 19196. https://doi.org/10.1038/s41598-020-76282-0
+          This blog post follows the “Guidelines for Bioinformatics Research Blog Post” (10-step standard) and includes LLM-use disclosure to respect academic integrity.
         </p>
       </footer>
     </article>
@@ -134,7 +198,6 @@
   </footer>
 
   <script>
-    // Keep the year fresh without manual edits
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
