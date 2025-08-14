@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AI-Assisted Detection of COVID-19 Pneumonia on CT: Methods, Findings, and Lessons for Precision Medicine</title>
-  <meta name="description" content="Scholarship-ready bioinformatics research blog post following Stanford's 10-step guideline, based on a Scientific Reports paper using UNet++ to detect COVID-19 pneumonia from high-resolution CT scans." />
+  <title>AI-Assisted Detection of COVId 19 Pneumonia on CT: Methods, Findings, and Lessons for Precision Medicine</title>
+  <meta name="description" content="Scholarship-ready bioinformatics research blog post following Stanford's 10-step guideline, based on a Scientific Reports paper using UNet++ to detect COVId 19 pneumonia from high-resolution CT scans." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="theme-academic">
@@ -39,7 +39,7 @@
           AI Assisted Detection of COVID 19 Pneumonia on CT: Methods, Findings, and Lessons for Precision Medicine
         </h2>
         <p class="dek" itemprop="description">
-          I review a Scientific Reports study that trained a UNet++ segmentation model (ResNet50 backbone) on high resolution CT scans to detect COVID-19 pneumonia, evaluate its performance, and discuss implications for precision medicine, ethics, and real-world deployment.
+          I review a Scientific Reports study that trained a UNet++ segmentation model (ResNet50 backbone) on high resolution CT scans to detect COVID 19 pneumonia, evaluate its performance, and discuss implications for precision medicine, ethics, and real-world deployment.
         </p>
       </header>
 
@@ -47,7 +47,7 @@
         <h3 id="introduction">Introduction (Step 1)</h3>
         <p>
           I selected <em>Deep learning based model for detecting 2019 novel coronavirus pneumonia on high resolution computed tomography</em>
-          (Scientific Reports, 2020) because it sits at the intersection of applied AI, clinical imaging, and scalable decision support—areas central to my goal of developing deployable precision-medicine tools in resource-constrained settings. The main question addressed by the research is whether a deep learning system can accurately and quickly identify COVID-19 pneumonia on chest CT images to support timely triage. This problem matters in bioinformatics because robust, generalizable models that convert high-dimensional biomedical data into reliable predictions are foundational to precision medicine. The authors hypothesize that a UNet++ segmentation pipeline—augmented by logical rules across slices and quadrants—can match expert radiologist performance while reducing reading time, thereby aiding clinical workflows during surges.
+          (Scientific Reports, 2020) because it sits at the intersection of applied AI, clinical imaging, and scalable decision support—areas central to my goal of developing deployable precision-medicine tools in resource-constrained settings. The main question addressed by the research is whether a deep learning system can accurately and quickly identify COVID 19 pneumonia on chest CT images to support timely triage. This problem matters in bioinformatics because robust, generalizable models that convert high-dimensional biomedical data into reliable predictions are foundational to precision medicine. The authors hypothesize that a UNet++ segmentation pipeline—augmented by logical rules across slices and quadrants—can match expert radiologist performance while reducing reading time, thereby aiding clinical workflows during surges.
         </p>
 
         <h3 id="background">Background & Context (Step 2)</h3>
@@ -128,7 +128,7 @@
 
         <h3 id="discussion">Discussion & Implications (Step 5)</h3>
         <p>
-          The authors conclude that a UNet++ segmentation model, combined with lightweight logical rules, can support rapid and accurate CT-based detection of COVID-19 pneumonia. Practically, this enables faster triage, more consistent reads under heavy workloads, and potential extension to other pneumonias. Theoretically, the work reinforces that carefully engineered segmentation plus domain-informed post-processing can outperform naive image-level classifiers for subtle pathologies.
+          The authors conclude that a UNet++ segmentation model, combined with lightweight logical rules, can support rapid and accurate CT based detection of COVId 19 pneumonia. Practically, this enables faster triage, more consistent reads under heavy workloads, and potential extension to other pneumonias. Theoretically, the work reinforces that carefully engineered segmentation plus domain-informed post-processing can outperform naive image-level classifiers for subtle pathologies.
         </p>
         <p>
           Limitations include dataset scope (number of sites/scanners), potential spectrum bias, and the need for robust prospective validation across diverse demographics and acquisition protocols. Future studies should explore federated learning for privacy-preserving multi-site training, calibrated uncertainty estimates, and integration with clinical/omic covariates to move from detection toward individualized risk stratification—core to precision medicine.
@@ -151,7 +151,7 @@
 
         <h3 id="conclusion">Conclusion</h3>
         <p>
-          This study demonstrates that a UNet++ segmentation approach with a ResNet-50 backbone can detect COVID-19 pneumonia on CT with high accuracy and sensitivity while reducing radiologist reading time by about two-thirds. Beyond the pandemic, its design principles—precise pixel-level modeling, domain-informed heuristics, and validation across cohorts—provide a blueprint for building trustworthy clinical AI. As precision medicine advances, such systems will increasingly serve as decision-support co-pilots, enabling clinicians to deliver timely, individualized care.
+          This study demonstrates that a UNet++ segmentation approach with a ResNet-50 backbone can detect COVId 19 pneumonia on CT with high accuracy and sensitivity while reducing radiologist reading time by about two-thirds. Beyond the pandemic, its design principles—precise pixel-level modeling, domain-informed heuristics, and validation across cohorts—provide a blueprint for building trustworthy clinical AI. As precision medicine advances, such systems will increasingly serve as decision-support co-pilots, enabling clinicians to deliver timely, individualized care.
         </p>
 
         <h3 id="references">References</h3>
