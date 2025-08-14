@@ -36,39 +36,39 @@
     <article class="post" itemscope itemtype="https://schema.org/ScholarlyArticle">
       <header class="post-header">
         <h2 class="post-title" itemprop="headline">
-          AI-Assisted Detection of COVID-19 Pneumonia on CT: Methods, Findings, and Lessons for Precision Medicine
+          AI Assisted Detection of COVID 19 Pneumonia on CT: Methods, Findings, and Lessons for Precision Medicine
         </h2>
         <p class="dek" itemprop="description">
-          I review a Scientific Reports study that trained a UNet++ segmentation model (ResNet-50 backbone) on high-resolution CT scans to detect COVID-19 pneumonia, evaluate its performance, and discuss implications for precision medicine, ethics, and real-world deployment.
+          I review a Scientific Reports study that trained a UNet++ segmentation model (ResNet50 backbone) on high resolution CT scans to detect COVID-19 pneumonia, evaluate its performance, and discuss implications for precision medicine, ethics, and real-world deployment.
         </p>
       </header>
 
       <section class="post-body" itemprop="articleBody">
         <h3 id="introduction">Introduction (Step 1)</h3>
         <p>
-          I selected <em>Deep learning-based model for detecting 2019 novel coronavirus pneumonia on high-resolution computed tomography</em>
+          I selected <em>Deep learning based model for detecting 2019 novel coronavirus pneumonia on high resolution computed tomography</em>
           (Scientific Reports, 2020) because it sits at the intersection of applied AI, clinical imaging, and scalable decision support—areas central to my goal of developing deployable precision-medicine tools in resource-constrained settings. The main question addressed by the research is whether a deep learning system can accurately and quickly identify COVID-19 pneumonia on chest CT images to support timely triage. This problem matters in bioinformatics because robust, generalizable models that convert high-dimensional biomedical data into reliable predictions are foundational to precision medicine. The authors hypothesize that a UNet++ segmentation pipeline—augmented by logical rules across slices and quadrants—can match expert radiologist performance while reducing reading time, thereby aiding clinical workflows during surges.
         </p>
 
         <h3 id="background">Background & Context (Step 2)</h3>
         <p>
-          Chest CT offers rich spatial context for pulmonary pathologies such as ground-glass opacities—typical in viral pneumonias. During the early COVID-19 outbreak, RT-PCR remained the diagnostic reference standard, yet imaging frequently assisted with rapid assessment and isolation decisions. From a research-ethics perspective, patient privacy and data governance are crucial; imaging data must be de-identified and used under appropriate approvals. From a cloud-computing viewpoint, scalable inference endpoints can extend diagnostic support to hospitals with few radiologists, provided security and latency requirements are met. Although this study is imaging-centric (not omics), it aligns with omics data principles: standardized processing, rigorous validation, and transparent reporting to ensure reproducibility and integration with other patient-level features in precision workflows.
+          Chest CT offers rich spatial context for pulmonary pathologies such as ground glass opacities—typical in viral pneumonias. During the early COVID 19 outbreak, RT PCR remained the diagnostic reference standard, yet imaging frequently assisted with rapid assessment and isolation decisions. From a research-ethics perspective, patient privacy and data governance are crucial; imaging data must be de-identified and used under appropriate approvals. From a cloud-computing viewpoint, scalable inference endpoints can extend diagnostic support to hospitals with few radiologists, provided security and latency requirements are met. Although this study is imaging-centric (not omics), it aligns with omics data principles: standardized processing, rigorous validation, and transparent reporting to ensure reproducibility and integration with other patient-level features in precision workflows.
         </p>
         <p>
-          The work builds upon established convolutional neural network architectures for medical segmentation (UNet/UNet++), transfer learning (ResNet-family backbones), and practical clinical heuristics to reduce false positives. It both confirms and extends prior observations that AI can approach expert-level detection in medical imaging while addressing throughput and consistency.
+          The work builds upon established convolutional neural network architectures for medical segmentation (UNet/UNet++), transfer learning (ResNet family backbones), and practical clinical heuristics to reduce false positives. It both confirms and extends prior observations that AI can approach expert-level detection in medical imaging while addressing throughput and consistency.
         </p>
 
         <h3 id="methodology">Methodology (Step 3)</h3>
         <p>
-          The authors trained a <strong>UNet++</strong> segmentation model with a <strong>ResNet-50</strong> backbone on chest CT images. The dataset comprised
-          <strong>46,096</strong> CT images from <strong>106</strong> patients (51 COVID-19 positive; 55 controls). After quality filtering, <strong>35,355</strong> lung images remained for analysis.
+          The authors trained a <strong>UNet++</strong> segmentation model with a <strong>ResNet 50</strong> backbone on chest CT images. The dataset comprised
+          <strong>46,096</strong> CT images from <strong>106</strong> patients (51 COVID 19 positive; 55 controls). After quality filtering, <strong>35,355</strong> lung images remained for analysis.
           Expert radiologists provided pixel-level lesion annotations. The pipeline proceeded in two stages: (1) detect valid lung regions, and (2) perform lesion segmentation. To stabilize predictions and minimize false positives, the system linked consecutive slices and lung quadrants via simple rules (e.g., requiring spatial consistency across adjacent slices).
         </p>
         <p>
           <strong>Why these methods?</strong> A segmentation approach captures lesion morphology at the pixel level, enabling precise localization compared to image-level classifiers. UNet++ provides dense skip connections for better multi-scale feature fusion—useful for subtle ground-glass patterns. ResNet-50 balances capacity and computational efficiency. Radiologist annotations make supervised learning reliable. Alternative dimensionality-reduction methods like PCA/t-SNE are more suitable for visualization than pixelwise delineation; here, convolutional segmentation is appropriate.
         </p>
         <p>
-          <strong>Data processing & tools:</strong> Images were curated to exclude non-lung slices; lung masks focused the model on relevant anatomy. While the paper does not enumerate every software package line-by-line, the workflow is typical of Python-based deep learning (e.g., PyTorch/Keras), with DICOM/PNG preprocessing, data augmentation, and cross-validation. Statistical reasoning centers on accuracy/sensitivity at image- and patient-levels. Conceptually, comparing mean per-patient probabilities across cohorts parallels hypothesis testing where a higher mean score for positives supports the model’s discriminative power.
+          <strong>Data processing & tools:</strong> Images were curated to exclude non lung slices; lung masks focused the model on relevant anatomy. While the paper does not enumerate every software package line-by-line, the workflow is typical of Python-based deep learning (e.g., PyTorch/Keras), with DICOM/PNG preprocessing, data augmentation, and cross-validation. Statistical reasoning centers on accuracy/sensitivity at image- and patient-levels. Conceptually, comparing mean per-patient probabilities across cohorts parallels hypothesis testing where a higher mean score for positives supports the model’s discriminative power.
         </p>
 
         <h3 id="results">Results (Step 4)</h3>
